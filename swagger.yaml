@@ -17,7 +17,7 @@ definitions:
     description: "システムにログインするユーザー。管理者と社員を想定"
     type: "object"
     properties:
-      corporation:
+      company:
         $ref: '#/definitions/Company'
 
   Point:

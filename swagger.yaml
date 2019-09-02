@@ -33,7 +33,7 @@ definitions:
       company:
         $ref: '#/definitions/Company'
 
-  JobApplication:
+  Application:
     type: "object"
     description: "社員から紹介された求人応募情報"
     properties:
@@ -48,12 +48,14 @@ definitions:
         $ref: '#/definitions/Applicant'        
       status: 
         description: "#応募/面談/内定/削除 などのステータス"
-        $ref: '#/definitions/JobApplicationStatus'
+        $ref: '#/definitions/Status'
 
   Applicant:
     type: "object"
     description: "求人に応募する人"
+    properties:
 
-  ApplicationStatus:
+  Status:
     type: "object"
     description: "#応募/面談/内定/削除 などのステータス"
+    properties:

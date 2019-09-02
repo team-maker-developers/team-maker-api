@@ -20,12 +20,11 @@ definitions:
       company:
         $ref: '#/definitions/Company'
 
-  Point:
-    description: "社員が紹介した求人が内定すると貯まるポイント"
+  Incentive:
+    description: "社員が紹介した求人が内定すると貯まるインセンティブ。"
     type: "object"
     properties:
-      user:
-        $ref: '#/definitions/User'
+
   Job:
     type: "object"
     description: "求人情報"
@@ -37,9 +36,6 @@ definitions:
     type: "object"
     description: "社員から紹介された求人応募情報"
     properties:
-      introducer: 
-        description: "求人紹介した社員"
-        $ref: '#/definitions/User'
       job: 
         description: "求人情報"
         $ref: '#/definitions/Job'
@@ -54,6 +50,9 @@ definitions:
     type: "object"
     description: "求人に応募する人"
     properties:
+      introducer: 
+        description: "求人紹介した社員"
+        $ref: '#/definitions/User'
 
   Status:
     type: "object"

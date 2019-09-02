@@ -8,92 +8,52 @@ info:
     email: "system@teammaker.info"
 paths: # TODO: 後で定義する
 definitions:
-  Corporation:
+  Company:
     description: "求人企業情報"
     type: "object"
     properties:
-      id:
-        type: "integer"
-      name:
-        type: "string"
-        description: "求人企業名"
-        example: "感動画株式会社"
-      other:
-        type: "string"      
-        description: "json形式で会社情報を格納する"
-  Administrator:
-    description: "ある求人企業の管理ユーザー情報"
+
+  User:
+    description: "システムにログインするユーザー。管理者と社員を想定"
     type: "object"
     properties:
-      id:
-        type: "integer"
-      name:
-        type: "string"
-        example: "管理ユーザー"
-      email:
-        type: "string"
-        example: "system@teammaker.info"
-      password:
-        type: "string"
-        example: "password"
-      passwordConfirm:
-        type: "string"
-        example: "password"
-      # corporation: 必要か迷ったが削除。GETをGraphQLで行う前提だと不要と考えた。
-        # $ref: '#/definitions/Corporation'
-  Employee:
+      corporation:
+        $ref: '#/definitions/Company'
+
+  Point:
+    description: "社員が紹介した求人が内定すると貯まるポイント"
     type: "object"
-    description: "ある求人企業の社員情報" 
     properties:
-      id:
-        type: "string"
-        description: "ID情報。管理者が任意の文字に指定する。会社用のメアドを持たない社員が多いと想定しemailは使わない。" 
-      name:
-        type: "string"
-        example: "齊藤 大介"
-      password:
-        type: "string"
-        example: "password"
-      passwordConfirm:
-        type: "string"
-        example: "password"
-      tag:
-        description: "コンサルタントが指定するタグ"
-        type: "string"
-      department:
-        description: "部署"
-        type: "string"
-        example: "営業"
-      point:
-        description: "紹介した求人が内定すると貯まるポイント"
-        type: "integer"
-      # corporation: 必要か迷ったが削除。GETをGraphQLで行う前提だと不要と考えた。
-        # $ref: '#/definitions/Corporation'
-  JobOffer:
+      user:
+        $ref: '#/definitions/User'
+  Job:
     type: "object"
     description: "求人情報"
     properties:
-      id:
-        type: "integer"
-      name:
-        type: "string"
-      other:
-        description: "求人情報（仕事内容、給与など）をjsonで格納する"
-        type: "string"      
-      # corporation: 必要か迷ったが削除。GETをGraphQLで行う前提だと不要と考えた。
-        # $ref: '#/definitions/Corporation'
+      company:
+        $ref: '#/definitions/Company'
+
   JobApplication:
     type: "object"
     description: "社員から紹介された求人応募情報"
     properties:
-      id:
-        type: "integer"
-      info:
-        description: "応募情報。LINEのスキーマが不明のため、noSql or json型で対応する。求職者の名前などもここに入っている想定"
-        type: string
-      # introducerEmployee: 必要か迷ったが削除。GETをGraphQLで行う前提だと不要と考えた。
-        # description: "紹介した社員"
-        # $ref: '#/definitions/Employee'
+      introducer: 
+        description: "求人紹介した社員"
+        $ref: '#/definitions/User'
+      job: 
+        description: "求人情報"
+        $ref: '#/definitions/Job'
+      applicant:
+        description: "求人に応募する人" 
+        $ref: '#/definitions/Applicant'        
       status: 
         description: "#応募/面談/内定/削除 などのステータス"
-        type: "integer"
+        $ref: '#/definitions/JobApplicationStatus'
+
+  Applicant:
+    type: "object"
+    description: "求人に応募する人"
+
+  ApplicationStatus:
+    type: "object"
+    description: "#応募/面談/内定/削除 などのステータス"

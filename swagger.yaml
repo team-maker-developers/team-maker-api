@@ -1,0 +1,60 @@
+swagger: "2.0"
+info:
+  description: "これはTEAM-MAKERに関するAPIです。"
+  version: "0.0.1"
+  title: "TEAM-MAKER API"
+  termsOfService: "http://teammaker.com" # 仮定義
+  contact:
+    email: "system@teammaker.info"
+paths: # TODO: 後で定義する
+definitions:
+  Company:
+    description: "求人企業情報"
+    type: "object"
+    properties:
+
+  User:
+    description: "システムにログインするユーザー。管理者と社員を想定"
+    type: "object"
+    properties:
+      company:
+        $ref: '#/definitions/Company'
+
+  Incentive:
+    description: "社員が紹介した求人が内定すると貯まるインセンティブ。"
+    type: "object"
+    properties:
+
+  Job:
+    type: "object"
+    description: "求人情報"
+    properties:
+      company:
+        $ref: '#/definitions/Company'
+
+  Application:
+    type: "object"
+    description: "社員から紹介された求人応募情報"
+    properties:
+      job: 
+        description: "求人情報"
+        $ref: '#/definitions/Job'
+      applicant:
+        description: "求人に応募する人" 
+        $ref: '#/definitions/Applicant'        
+      status: 
+        description: "#応募/面談/内定/削除 などのステータス"
+        $ref: '#/definitions/Status'
+
+  Applicant:
+    type: "object"
+    description: "求人に応募する人"
+    properties:
+      introducer: 
+        description: "求人紹介した社員"
+        $ref: '#/definitions/User'
+
+  Status:
+    type: "object"
+    description: "#応募/面談/内定/削除 などのステータス"
+    properties:

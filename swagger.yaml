@@ -12,7 +12,21 @@ definitions:
     description: "求人企業情報"
     type: "object"
     properties:
-
+      id:
+        type: "integer"
+        description: "ID情報"
+        example: 1
+      name:
+        type: "string"
+        description: "求人企業名"
+        example: "感動画株式会社"
+      kana:
+        type: "string"
+        description: "求人企業名（ひらがな）"
+        example: "かんどうがかぶしきがしゃ"
+      info:
+        type: "object"
+        description: "json形式でその他の会社情報を格納する"
   User:
     description: "システムにログインするユーザー。管理者と社員を想定"
     type: "object"
@@ -43,7 +57,7 @@ definitions:
         description: "求人に応募する人" 
         $ref: '#/definitions/Applicant'        
       status: 
-        description: "#応募/面談/内定/削除 などのステータス"
+        description: "#応募/面談/内定などのステータス"
         $ref: '#/definitions/Status'
 
   Applicant:

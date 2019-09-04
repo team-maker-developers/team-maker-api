@@ -39,22 +39,28 @@ definitions:
       job: 
         description: "求人情報"
         $ref: '#/definitions/Job'
+      introducer: 
+        description: "求人紹介した社員"
+        $ref: '#/definitions/User'
       applicant:
         description: "求人に応募する人" 
         $ref: '#/definitions/Applicant'        
       status: 
         description: "#応募/面談/内定/削除 などのステータス"
         $ref: '#/definitions/Status'
+      company:
+        $ref: '#/definitions/Company'
 
   Applicant:
     type: "object"
     description: "求人に応募する人"
     properties:
-      introducer: 
-        description: "求人紹介した社員"
-        $ref: '#/definitions/User'
+      company:
+        $ref: '#/definitions/Company'
 
   Status:
     type: "object"
     description: "#応募/面談/内定/削除 などのステータス"
     properties:
+      company:
+        $ref: '#/definitions/Company'

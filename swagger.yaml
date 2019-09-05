@@ -17,8 +17,6 @@ definitions:
     description: "システムにログインするユーザー。管理者と社員を想定"
     type: "object"
     properties:
-      company:
-        $ref: '#/definitions/Company'
 
   Incentive:
     description: "社員が紹介した求人が内定すると貯まるインセンティブ。"
@@ -48,19 +46,13 @@ definitions:
       status: 
         description: "#応募/面談/内定/削除 などのステータス"
         $ref: '#/definitions/Status'
-      company:
-        $ref: '#/definitions/Company'
 
   Applicant:
     type: "object"
     description: "求人に応募する人"
     properties:
-      company:
-        $ref: '#/definitions/Company'
 
   Status:
     type: "object"
     description: "#応募/面談/内定/削除 などのステータス"
     properties:
-      company:
-        $ref: '#/definitions/Company'

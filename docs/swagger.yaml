@@ -6,7 +6,6 @@ info:
   termsOfService: "http://teammaker.com" # 仮定義
   contact:
     email: "system@teammaker.info"
-# paths: # TODO: 後で定義する
 servers:
   - url: "http://localhost:8888"
     description: ローカルサーバ
@@ -50,43 +49,93 @@ paths:
                     type: string
                     example: 2
                   meta:
-                    title: メタタグ
-                    type: json
-                    example: {}
+                    type: object
+                    properties:
                   content:
-                    title: コンテンツ
-                    type: json
-                    example: {
-                      common_content: ページ種別に依存しないコンテンツ,
-                      pageable_content: {
-                        type: job,
-                        record: {
-                          id: 1,
-                          employment_category_id: 1,
-                          code: 72,
-                          name: Jerrod Jenkins,
-                          job_content: Magnam autem tempora voluptatem numquam. In nulla ut animi in et nulla. Et voluptatum sint necessitatibus et sint non. Ipsum assumenda earum aut debitis et ullam.,
-                          contract_period: {
-                            finished_at: 2020-09-04 15:25:07
-                          },
-                          welfare: In doloremque et sequi quo voluptatem maiores qui. Dolorem rem et voluptatibus temporibus vel est. Vitae est ab non quasi deserunt et.,
-                          industry: {
-                            industry: "",
-                            occupation: "",
-                          },
-                          work_datetime: {},
-                          salary: {
-                            hourly: ""
-                          },
-                          place: {
-                            address: 315 Torp Cliffs Apt. 455
-                          },
-                          info: {},
-                          published_at: 2020-09-04 15:25:07,
-                          expired_at: 2020-11-04 15:25:07
-                        }
-                      }
-                    }
+                    type: object
+                    properties:
+                      common_content:
+                        title: ページ種別に依存しないコンテンツ
+                        type: string
+                        example: ページ種別に依存しないコンテンツサンプル
+                      pageable_content:
+                        type: object
+                        properties:
+                          type:
+                            title: コンテンツのタイプ
+                            type: string
+                            enum: [job, facilities, wysiwyg]
+                            example: job
+                          record:
+                            type: object
+                            properties:
+                              id:
+                                title: コンテンツのID
+                                type: number
+                                example: 1
+                              employment_category_id:
+                                title: 就業形態
+                                type: number
+                                example: 1
+                              code:
+                                title: 管理用コード
+                                type: number
+                                example: 72
+                              name:
+                                title: 求人のタイトル
+                                type: string
+                                example: Jerrod Jenkins
+                              job_content:
+                                title: 業務内容
+                                type: string
+                                example: Magnam autem tempora voluptatem numquam. In nulla ut animi in et nulla.
+                              contract_period:
+                                type: object
+                                properties:
+                                  finished_at:
+                                    title: 契約期間
+                                    type: string
+                                    example:
+                              welfare:
+                                title: 福利厚生
+                                type: string
+                                example: ◇ 労災保険
+                              industry:
+                                type: object
+                                properties:
+                                  industry:
+                                    title: 業界
+                                    type: string
+                                    example: 
+                                  occupation:
+                                    title: 職業
+                                    type: string
+                                    example:
+                              work_datetime:
+                                type: object
+                                properties:
+                              salary:
+                                type: object
+                                properties: 
+                                  hourly:
+                                    title: 時給
+                                    type: string
+                                    example:
+                              place:
+                                title: 勤務地
+                                type: string
+                                example: 315 Torp Cliffs Apt. 455
+                              info:
+                                type: object
+                                properties:
+                              published_at:
+                                title: 掲載開始日
+                                type: string
+                                example: 2020-09-04 15:25:07
+                              expired_at:
+                                title: 有効期限
+                                type: string
+                                example: expired_at            
                   released_at:
                     title: 公開日
                     type: string
@@ -140,3 +189,4 @@ definitions:
     type: "object"
     description: "#応募/面談/内定/削除 などのステータス"
     properties:
+

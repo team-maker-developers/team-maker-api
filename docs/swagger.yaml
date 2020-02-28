@@ -6,28 +6,17 @@ info:
   termsOfService: "http://teammaker.com" # 仮定義
   contact:
     email: "system@teammaker.info"
-servers:
-  - url: "http://localhost:8888"
-    description: ローカルサーバ
-components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
 paths:
-  "/api/v1/page/{id}":
+  "/api/v1/page/{slug}":
     get:
       summary: "ページコンテンツ取得エンドポイント"
       description: "ページコンテンツ取得エンドポイント"
-      security:
-        - bearerAuth: []
       parameters:
         - in: path
-          name: id
+          name: slug
           required: true
           schema:
-            type: integer
+            type: string
       responses:
         "200":
           description: "ページ詳細"

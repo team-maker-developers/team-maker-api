@@ -19,8 +19,8 @@ components:
 paths:
   "/api/v1/page/{id}":
     get:
-      summary: "求人レコードの取得エンドポイント"
-      description: "求人レコードの取得エンドポイント"
+      summary: "ページコンテンツ取得エンドポイント"
+      description: "ページコンテンツ取得エンドポイント"
       security:
         - bearerAuth: []
       parameters:
@@ -55,26 +55,37 @@ paths:
                     example: {}
                   content:
                     title: コンテンツ
-                    type: string
-                    example: ページ種別に依存しないコンテンツ
-                  job:
-                    title: 求人
                     type: json
-                    example: { 
-                      id: 1, 
-                      employment_category_id: 1,
-                      code: 管理用コード,
-                      name: 港区で働く訪問看護師,
-                      job_content: 業務内容,
-                      contract_period: {},
-                      welfare: 福利厚生,
-                      industry: {},
-                      work_datetime: {},
-                      salary: {},
-                      place: {},
-                      info: {},
-                      published_at: 2020-09-04 15:25:07,
-                      expired_at: 2020-11-04 15:25:07
+                    example: {
+                      common_content: ページ種別に依存しないコンテンツ,
+                      pageable_content: {
+                        type: job,
+                        record: {
+                          id: 1,
+                          employment_category_id: 1,
+                          code: 72,
+                          name: Jerrod Jenkins,
+                          job_content: Magnam autem tempora voluptatem numquam. In nulla ut animi in et nulla. Et voluptatum sint necessitatibus et sint non. Ipsum assumenda earum aut debitis et ullam.,
+                          contract_period: {
+                            finished_at: 2020-09-04 15:25:07
+                          },
+                          welfare: In doloremque et sequi quo voluptatem maiores qui. Dolorem rem et voluptatibus temporibus vel est. Vitae est ab non quasi deserunt et.,
+                          industry: {
+                            industry: "",
+                            occupation: "",
+                          },
+                          work_datetime: {},
+                          salary: {
+                            hourly: ""
+                          },
+                          place: {
+                            address: 315 Torp Cliffs Apt. 455
+                          },
+                          info: {},
+                          published_at: 2020-09-04 15:25:07,
+                          expired_at: 2020-11-04 15:25:07
+                        }
+                      }
                     }
                   released_at:
                     title: 公開日

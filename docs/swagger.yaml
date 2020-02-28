@@ -33,16 +33,24 @@ paths:
                     type: number
                     readOnly: true
                     example: 1
-                  company_id:
-                    title: 会社ID
-                    type: string
-                    example: 2
+                  company:
+                    type: object
+                    properties:
+                      name:
+                        title: 会社名
+                        type: string
+                        example: サンプル会社
+                      unique_id:
+                        title: 会社ID
+                        type: string
+                        example: 5e55sss2dc291d
                   meta:
                     type: object
                     properties:
-                      title: タイトル
-                      type: string
-                      example: タイトル
+                      title:
+                        title: タイトル
+                        type: string
+                        example: サンプルタイトル
                   content:
                     type: object
                     properties:

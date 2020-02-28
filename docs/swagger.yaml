@@ -40,6 +40,9 @@ paths:
                   meta:
                     type: object
                     properties:
+                      title: タイトル
+                      type: string
+                      example: タイトル
                   content:
                     type: object
                     properties:

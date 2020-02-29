@@ -59,7 +59,6 @@ paths:
                         type: string
                         example: ページ種別に依存しないコンテンツサンプル
                       pageable_content:
-                        type: object
                         properties:
                           type:
                             title: コンテンツのタイプ
@@ -67,79 +66,83 @@ paths:
                             enum: [job, facilities, wysiwyg]
                             example: job
                           record:
-                            type: object
-                            properties:
-                              id:
-                                title: コンテンツのID
-                                type: number
-                                example: 1
-                              employment_category_id:
-                                title: 就業形態
-                                type: number
-                                example: 1
-                              code:
-                                title: 管理用コード
-                                type: number
-                                example: 72
-                              name:
-                                title: 求人のタイトル
-                                type: string
-                                example: Jerrod Jenkins
-                              job_content:
-                                title: 業務内容
-                                type: string
-                                example: Magnam autem tempora voluptatem numquam. In nulla ut animi in et nulla.
-                              contract_period:
-                                type: object
-                                properties:
-                                  finished_at:
-                                    title: 契約期間
-                                    type: string
-                                    example:
-                              welfare:
-                                title: 福利厚生
-                                type: string
-                                example: ◇ 労災保険
-                              industry:
-                                type: object
-                                properties:
-                                  industry:
-                                    title: 業界
-                                    type: string
-                                    example: 
-                                  occupation:
-                                    title: 職業
-                                    type: string
-                                    example:
-                              work_datetime:
-                                type: object
-                                properties:
-                              salary:
-                                type: object
-                                properties: 
-                                  hourly:
-                                    title: 時給
-                                    type: string
-                                    example:
-                              place:
-                                title: 勤務地
-                                type: string
-                                example: 315 Torp Cliffs Apt. 455
-                              info:
-                                type: object
-                                properties:
-                              published_at:
-                                title: 掲載開始日
-                                type: string
-                                example: 2020-09-04 15:25:07
-                              expired_at:
-                                title: 有効期限
-                                type: string
-                                example: expired_at            
+                            $ref: '#/components/schemas/Job'
                   released_at:
                     title: 公開日
                     type: string
                     example: 2020-10-04 15:25:07
+components:
+  schemas: # スキーマオブジェクトの定義
+    Job: # モデル名
+      type: object
+      properties:
+        id:
+          title: コンテンツのID
+          type: number
+          example: 1
+        employment_category_id:
+          title: 就業形態
+          type: number
+          example: 1
+        code:
+          title: 管理用コード
+          type: number
+          example: 72
+        name:
+          title: 求人のタイトル
+          type: string
+          example: Jerrod Jenkins
+        job_content:
+          title: 業務内容
+          type: string
+          example: Magnam autem tempora voluptatem numquam. In nulla ut animi in et nulla.
+        contract_period:
+          type: object
+          properties:
+            finished_at:
+              title:
+              type:
+              example:
+        welfare:
+          title: 福利厚生
+          type: string
+          example: ◇ 労災保険
+        industry:
+          type: object
+          properties:
+            industry:
+              title: 業界
+              type: string
+              example:
+            occupation:
+              title: 職業
+              type: string
+              example:
+        work_datetime:
+          type: object
+          properties:
+        salary:
+          type: object
+          properties:
+              hourly:
+                title: 時給
+                type: string
+                example:
+        place:
+          title: 勤務地
+          type: string
+          example: 315 Torp Cliffs Apt. 455
+        info:
+          type: object
+          properties:
+        published_at:
+          title: 掲載開始日
+          type: string
+          example: 2020-09-04 15:25:07
+        expired_at:
+          title: 有効期限
+          type: string
+          example: expired_at                                
 definitions:
   Company:
     description: "求人企業情報"

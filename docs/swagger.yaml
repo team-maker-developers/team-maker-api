@@ -54,7 +54,7 @@ components:
               type: string
               example: ページ種別に依存しないコンテンツサンプル
             pageable_content:
-              title: ポリモーフィック
+              title: ポリモーフィック関連で結びつくモデルがセットされる。各モデルのスキーマは、別プロパティに詳述する。 ex) jobが紐づく場合は、jobになる
               type: object
               properties:
                 type:

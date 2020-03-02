@@ -23,71 +23,73 @@ paths:
           content:
             "application/json":
               schema:
-                type: object
-                required:
-                  - id
-                  - name
-                properties:
-                  id:
-                    title: ページID
-                    type: number
-                    readOnly: true
-                    example: 1
-                  company:
-                    type: object
-                    properties:
-                      name:
-                        title: 会社名
-                        type: string
-                        example: サンプル会社
-                      unique_id:
-                        title: 会社ID
-                        type: string
-                        example: 5e55sss2dc291d
-                  meta:
-                    type: object
-                    properties:
-                      title:
-                        title: タイトル
-                        type: string
-                        example: サンプルタイトル
-                  content:
-                    type: object
-                    properties:
-                      common_content:
-                        title: ページ種別に依存しないコンテンツ
-                        type: string
-                        example: ページ種別に依存しないコンテンツサンプル
-                      pageable_content:
-                        properties:
-                          type:
-                            title: コンテンツのタイプ
-                            type: string
-                            enum: [job, facilities, wysiwyg]
-                            example: job
-                          record:
-                            $ref: '#/components/schemas/Job'
-                  released_at:
-                    title: 公開日
-                    type: string
-                    example: 2020-10-04 15:25:07
+                $ref: "#/components/schemas/Page"
 components:
-  schemas: # スキーマオブジェクトの定義
-    Job: # モデル名
+  schemas:
+    Page:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          title: ページID
+          type: number
+          readOnly: true
+          example: 1
+        company:
+          $ref: "#/components/schemas/Company"
+        meta:
+          type: object
+          properties:
+            title:
+              title: タイトル
+              type: string
+              example: サンプルタイトル
+        content:
+          type: object
+          properties:
+            common_content:
+              title: ページ種別に依存しないコンテンツ
+              type: string
+              example: ページ種別に依存しないコンテンツサンプル
+            pageable_content:
+              title: ポリモーフィック
+              type: object
+              properties:
+                type:
+                  title: コンテンツタイプ
+                  type: string
+                  enum: [job]
+                  example: job
+                record:
+                  $ref: "#/components/schemas/Job"
+        released_at:
+          title: 公開日
+          type: string
+          example: 2020-10-04 15:25:07
+    Job:
       type: object
       properties:
         id:
           title: コンテンツのID
           type: number
           example: 1
-        employment_category_id:
-          title: 就業形態
-          type: number
-          example: 1
+        employment_category:
+          type: object
+          properties:
+            id:
+              title: 雇用タイプのID
+              type: number
+              example: 1
+            name:
+              title: 雇用タイプ
+              type: string
+              example: 正社員  
         code:
           title: 管理用コード
-          type: number
-          example: 72
+          type: string
+          example: 476828240
         name:
           title: 求人のタイトル
           type: string
@@ -99,10 +101,6 @@ components:
         contract_period:
           type: object
           properties:
-            finished_at:
-              title:
-              type:
-              example:
         welfare:
           title: 福利厚生
           type: string
@@ -124,10 +122,10 @@ components:
         salary:
           type: object
           properties:
-              hourly:
-                title: 時給
-                type: string
-                example:
+            hourly:
+              title: 時給
+              type: string
+              example:
         place:
           title: 勤務地
           type: string
@@ -142,54 +140,15 @@ components:
         expired_at:
           title: 有効期限
           type: string
-          example: expired_at                                
-definitions:
-  Company:
-    description: "求人企業情報"
-    type: "object"
-    properties:
-
-  User:
-    description: "システムにログインするユーザー。管理者と社員を想定"
-    type: "object"
-    properties:
-
-  Incentive:
-    description: "社員が紹介した求人が内定すると貯まるインセンティブ。"
-    type: "object"
-    properties:
-
-  Job:
-    type: "object"
-    description: "求人情報"
-    properties:
-      company:
-        $ref: "#/definitions/Company"
-
-  Application:
-    type: "object"
-    description: "社員から紹介された求人応募情報"
-    properties:
-      job:
-        description: "求人情報"
-        $ref: "#/definitions/Job"
-      introducer:
-        description: "求人紹介した社員"
-        $ref: "#/definitions/User"
-      applicant:
-        description: "求人に応募する人"
-        $ref: "#/definitions/Applicant"
-      status:
-        description: "#応募/面談/内定/削除 などのステータス"
-        $ref: "#/definitions/Status"
-
-  Applicant:
-    type: "object"
-    description: "求人に応募する人"
-    properties:
-
-  Status:
-    type: "object"
-    description: "#応募/面談/内定/削除 などのステータス"
-    properties:
-
+          example: expired_at
+    Company:
+      type: object
+      properties:
+        name:
+          title: 会社名
+          type: string
+          example: サンプル会社
+        unique_id:
+          title: 会社ID
+          type: string
+          example: 5e55sss2dc291d

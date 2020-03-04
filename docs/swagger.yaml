@@ -48,10 +48,7 @@ components:
       type: object
       required:
         - email
-        - first_name
-        - last_name
-        - first_name_kana
-        - last_name_kana
+        - name
       properties:
         email:
           title: email

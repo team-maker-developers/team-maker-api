@@ -57,22 +57,10 @@ components:
           title: email
           type: string
           example: applicant001@example.com
-        first_name:
+        name:
           title: 名前
           type: string
-          example: 名前
-        last_name:
-          title: 名字
-          type: string
-          example: 名字   
-        first_name_kana:
-          title: 名前カナ
-          type: string
-          example: 名前カナ
-        last_name_kana:
-          title: 名字カナ
-          type: string
-          example: 名字カナ
+          example: サンプルユーザー
     Page:
       type: object
       required:

@@ -28,7 +28,6 @@ paths:
     post:
       summary: "応募者を登録するPOSTエンドポイント"
       description: "応募者を登録するPOSTエンドポイント"
-      parameters: []
       requestBody:
         description: applicant to create
         content:

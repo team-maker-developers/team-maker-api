@@ -38,6 +38,10 @@ paths:
       responses:
         '201':
           description: CREATED
+          content:
+            "application/json":
+              schema:
+                $ref: '#/components/schemas/Applicant'
 components:
   schemas:
     Applicant:

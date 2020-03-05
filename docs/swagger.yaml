@@ -33,7 +33,23 @@ paths:
         content:
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/Applicant'
+              properties:
+                email:
+                  title: email
+                  type: string
+                  example: applicant001@example.com
+                name:
+                  title: 応募者名
+                  type: string
+                  example: サンプルユーザー
+                job_id:
+                  title: 求人のID
+                  type: number
+                  example: 1
+                user_id:
+                  title: 紹介したユーザーのID
+                  type: number
+                  example: 1
       responses:
         '201':
           description: CREATED

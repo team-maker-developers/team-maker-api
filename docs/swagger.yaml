@@ -7,7 +7,7 @@ info:
   contact:
     email: "system@teammaker.info"
 paths:
-  "/api/v1/page/{slug}":
+  "/api/v0/page/{slug}":
     get:
       summary: "ページコンテンツ取得エンドポイント"
       description: "ページコンテンツ取得エンドポイント"
@@ -24,8 +24,55 @@ paths:
             "application/json":
               schema:
                 $ref: "#/components/schemas/Page"
+  "/api/v0/applicants":
+    post:
+      summary: "応募者を登録するPOSTエンドポイント"
+      description: "応募者を登録するPOSTエンドポイント"
+      requestBody:
+        description: applicant to create
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                email:
+                  title: email
+                  type: string
+                  example: applicant001@example.com
+                name:
+                  title: 応募者名
+                  type: string
+                  example: サンプルユーザー
+                job_id:
+                  title: 求人のID
+                  type: number
+                  example: 1
+                user_id:
+                  title: 紹介したユーザーのID
+                  type: number
+                  example: 1
+      responses:
+        '201':
+          description: CREATED
+          content:
+            "application/json":
+              schema:
+                $ref: '#/components/schemas/Applicant'
 components:
   schemas:
+    Applicant:
+      type: object
+      required:
+        - email
+        - name
+      properties:
+        email:
+          title: email
+          type: string
+          example: applicant001@example.com
+        name:
+          title: 名前
+          type: string
+          example: サンプルユーザー
     Page:
       type: object
       required:

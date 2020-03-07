@@ -3,7 +3,7 @@ info:
   description: "これはTEAM-MAKERに関するAPIです。"
   version: "0.0.1"
   title: "TEAM-MAKER API"
-  termsOfService: "http://teammaker.com" # 仮定義
+  termsOfService: "http://teammaker.com"
   contact:
     email: "system@teammaker.info"
 paths:
@@ -18,8 +18,7 @@ paths:
           schema:
             type: string
         - in: query
-          name: refer_user_id
-          required: true
+          name: refer_code
           schema:
             type: string
       responses:

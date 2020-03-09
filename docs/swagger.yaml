@@ -17,6 +17,10 @@ paths:
           required: true
           schema:
             type: string
+        - in: query
+          name: refer_code
+          schema:
+            type: string
       responses:
         "200":
           description: "ページ詳細"
@@ -46,9 +50,9 @@ paths:
                   title: 求人のID
                   type: number
                   example: 1
-                user_id:
-                  title: 紹介したユーザーのID
-                  type: number
+                refer_code:
+                  title: 紹介したユーザーを特定するコード
+                  type: string
                   example: 1
       responses:
         '201':

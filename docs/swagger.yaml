@@ -50,9 +50,9 @@ paths:
                   title: 求人のID
                   type: number
                   example: 1
-                refer_user_id:
-                  title: 紹介したユーザーのID
-                  type: number
+                refer_code:
+                  title: 紹介したユーザーを特定するコード
+                  type: string
                   example: 1
       responses:
         '201':

@@ -3,7 +3,7 @@ info:
   description: "これはTEAM-MAKERに関するAPIです。"
   version: "0.0.1"
   title: "TEAM-MAKER API"
-  termsOfService: "http://teammaker.com"
+  termsOfService: "http://teammaker.com" # 仮定義
   contact:
     email: "system@teammaker.info"
 paths:

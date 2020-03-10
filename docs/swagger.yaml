@@ -53,7 +53,7 @@ paths:
                 refer_code:
                   title: 紹介したユーザーを特定するコード
                   type: string
-                  example: 1
+                  example: s4238a0afadfa3820dcc509a6f75849b
       responses:
         '201':
           description: CREATED
@@ -61,8 +61,75 @@ paths:
             "application/json":
               schema:
                 $ref: '#/components/schemas/Applicant'
+  "/api/v0/conversions":
+    post:
+      summary: "求人閲覧のコンバーションを登録するpostエンドポイント"
+      description: "求人閲覧のコンバーションを登録するpostエンドポイント"
+      requestBody:
+        description: applicant to create
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                conversionable_id:
+                  title: conversionable_id
+                  type: integer
+                  example: 1
+                conversionable_type:
+                  title: conversionable_type
+                  type: integer
+                  example: 1
+                refer_code:
+                  title: 紹介したユーザーを特定するコード
+                  type: string
+                  example: s4238a0afadfa3820dcc509a6f75849b
+                conversion_category:
+                  title: 従業員ID
+                  type: number
+                  example: 1
+      responses:
+        '201':
+          description: CREATED
+          content:
+            "application/json":
+              schema:
+                $ref: '#/components/schemas/Conversion'
 components:
   schemas:
+    Conversion:
+      type: object
+      required:
+        - id
+        - conversionable_id
+        - conversionable_type
+        - user_id
+        - conversion_category
+        - conversion_at
+      properties:
+        id:
+          title: コンバージョンID
+          type: integer
+          example: 1
+        conversionable_type:
+          title: ポリモーフィック関連で結びつくモデルのタイプのIDがセットされる。ex)Job
+          type: integer
+          example: 1
+        conversionable_id:
+          title: ポリモーフィック関連で結びつくモデルのIDがセットされる。ex)Jobのid
+          type: integer
+          example: 1
+        user_id:
+          title: 紹介したユーザーID
+          type: integer
+          example: 1
+        conversion_category:
+          title: カテゴリーID。ex)page viewなど
+          type: integer
+          example: 1
+        conversion_at:
+          title: コンバージョンした日
+          type: string
+          example: 2020-10-04 15:25:07
     Applicant:
       type: object
       required:

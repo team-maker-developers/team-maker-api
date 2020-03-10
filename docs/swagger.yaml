@@ -76,7 +76,7 @@ paths:
                   type: integer
                   example: 0
                 conversionable_id:
-                  title: ポリモーフィック関連で結びつくモデルのIDがセットされる。ex)jobのID
+                  title: ポリモーフィック関連で結びつくモデルのID。ex)jobのID
                   type: integer
                   example: 1
                 refer_code:

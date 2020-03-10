@@ -71,12 +71,12 @@ paths:
           application/x-www-form-urlencoded:
             schema:
               properties:
-                conversionable_id:
-                  title: conversionable_id
-                  type: integer
-                  example: 1
                 conversionable_type:
-                  title: conversionable_type
+                  title: ポリモーフィック関連で結びつくコンバージョンのタイプ。ex)0:job
+                  type: integer
+                  example: 0
+                conversionable_id:
+                  title: ポリモーフィック関連で結びつくモデルのIDがセットされる。ex)jobのID
                   type: integer
                   example: 1
                 refer_code:
@@ -111,11 +111,11 @@ components:
           type: integer
           example: 1
         conversionable_type:
-          title: ポリモーフィック関連で結びつくモデルのタイプのIDがセットされる。ex)Job
+          title: ポリモーフィック関連で結びつくコンバージョンのタイプ。ex)0:job
           type: integer
-          example: 1
+          example: 0
         conversionable_id:
-          title: ポリモーフィック関連で結びつくモデルのIDがセットされる。ex)Jobのid
+          title: ポリモーフィック関連で結びつくモデルのIDがセットされる。ex)jobのID
           type: integer
           example: 1
         user_id:
@@ -123,7 +123,7 @@ components:
           type: integer
           example: 1
         conversion_category:
-          title: カテゴリーID。ex)page viewなど
+          title: カテゴリーID。ex)0:page view
           type: integer
           example: 1
         conversion_at:

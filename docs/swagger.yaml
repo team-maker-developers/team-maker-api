@@ -7,6 +7,51 @@ info:
   contact:
     email: "system@teammaker.info"
 paths:
+  "/api/v0/page":
+    post:
+      summary: "求人ページコンテンツ登録エンドポイント"
+      description: "求人ページコンテンツ登録エンドポイント"
+      requestBody:
+        description: job page to create
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                employment_category_id:
+                  title: 雇用タイプのID
+                  type: number
+                  example: 1
+                code:
+                  title: 管理用コード
+                  type: string
+                  example: 1
+                name:
+                  title: 求人のタイトル
+                  type: string
+                  example: 求人のタイトルサンプル
+                job_content:
+                  title: 業務内容
+                  type: string
+                  example: Magnam autem tempora voluptatem numquam. In nulla ut animi in et nulla.
+                welfare:
+                  title: 福利厚生
+                  type: string
+                  example: 労災保険
+                published_at:
+                  title: 掲載開始日
+                  type: string
+                  example: 2020-10-04 15:25:07
+                expired_at:
+                  title: 掲載開始日
+                  type: string
+                  example: 2020-11-04 15:25:07
+      responses:
+        "200":
+          description: "ページ詳細"
+          content:
+            "application/json":
+              schema:
+                $ref: "#/components/schemas/Page"
   "/api/v0/page/{slug}":
     get:
       summary: "ページコンテンツ取得エンドポイント"
